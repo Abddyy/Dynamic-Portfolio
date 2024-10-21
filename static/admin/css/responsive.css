@@ -176,7 +176,7 @@ input[type="submit"], button {
 
     /*
     Minifiers remove the default (text) "type" attribute from "input" HTML
-    tags. Add input:not([type]) to make the CSS stylesheet work the same.
+    tags. Add input:not([type]) to make the css stylesheet work the same.
     */
     .form-row input:not([type]),
     .form-row input[type=text],

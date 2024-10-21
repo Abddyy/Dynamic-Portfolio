@@ -1,10 +1,11 @@
+{% extends 'index.html' %}
 <!DOCTYPE html>
 <html>
 <head>
 <title>Portfolio</title>
 </head>
 <body>
-{% for p in projects %} 
+{% for p in projects %}
     <h1>{{ p.title }}</h1>
     <img src="{{ p.image.url }}" alt="{{ p.title }}">
 {% endfor %}

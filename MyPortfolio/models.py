@@ -8,6 +8,11 @@ class Project(models.Model):
     def str(self):
         return self.title
 
+class Banner(models.Model):
+    image = models.ImageField(upload_to='images/')
+
+    def str(self):
+        return self.id
 
 class PersonalInfo(models.Model):
     fname = models.CharField(max_length=50, verbose_name='First Name')

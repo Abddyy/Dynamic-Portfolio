@@ -1,11 +1,13 @@
 from django.shortcuts import render
 
-from MyPortfolio.models import Project
+from MyPortfolio.models import Project, Banner
 
 
 def home(request):
     projects = Project.objects.all()
-    context = {'projects': projects}
+    banner = Banner.objects.first()
+    context = {'projects': projects, 'banner': banner}
+
     return render(request, 'pages/home.html', context)
 
 
