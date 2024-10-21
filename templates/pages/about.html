@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About</title>
+</head>
+<body>
+{% for p in projects %} 
+    <h1>{{ p.title }}</h1>
+    <img src="{{ p.image.url }}" alt="{{ p.title }}">
+{% endfor %}
+<h2>hello</h2>
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+
+</body>
+</html>
