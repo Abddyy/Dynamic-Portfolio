@@ -1,7 +1,17 @@
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary_storage
+import cloudinary.uploader
+import cloudinary.api
+import cloudinary
+import cloudinary.uploader
+from cloudinary.utils import cloudinary_url
+from dotenv import load_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-SECRET_KEY = 'django-insecure-a1u-d&y(nc!!c$ur^*)_!2kc@^g(v0y)%0!7^pnl-*=ktpgs$*'
+load_dotenv()
+SECRET_KEY =  os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -9,8 +19,6 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '*'
 ]
-
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -24,6 +32,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'MyPortfolio',
     'ckeditor',
+    'cloudinary',
+    'cloudinary_storage',
+
 ]
 
 STATIC_URL = 'static/'
@@ -52,6 +63,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'Portfolio.context_processor.personal_info',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -81,9 +93,9 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "postgres",
-        "USER": "postgres.krvbhidmxltcfsmlrguv",
-        "PASSWORD": "chwq4vMqRR1IV096",
-        "HOST": "aws-0-eu-central-1.pooler.supabase.com",
+        "USER":  os.getenv('USER'),
+        "PASSWORD":  os.getenv('PASSWORD'),
+        "HOST":  os.getenv('HOST'),
         "PORT": "6543",
     }
 }
@@ -128,3 +140,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+load_dotenv()
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

@@ -1,6 +1,9 @@
 body{
     background-color: black;
 }
+.navbar{
+    background-color: red;
+}
 
 .bannerStyle {
     width: 100%;
