@@ -1,17 +1,14 @@
 {% extends 'index.html' %}
-<!DOCTYPE html>
-<html>
-<head>
-<title>Portfolio</title>
-</head>
-<body>
-{% for p in projects %}
-    <h1>{{ p.title }}</h1>
-    <img src="{{ p.image.url }}" alt="{{ p.title }}">
-{% endfor %}
-<h2>hello</h2>
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+{% block title %}
+    <title>Portfolio</title>
+{% endblock title %}
 
-</body>
-</html>
+{% block banner %}
+    {% if banner %}
+        <div class="image-container w-100" style="position: relative;">
+            <img src="{{ banner.image.url }} " alt="{{ banner.alt_text }}" width="100%">
+        </div>
+    {% else %}
+        <p>No banner available</p>
+    {% endif %}
+{% endblock banner %}

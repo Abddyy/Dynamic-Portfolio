@@ -10,12 +10,20 @@ class Project(models.Model):
     def str(self):
         return self.title
 
-
 class Banner(models.Model):
-    image = CloudinaryField('images', null=True, blank=True)
+    PAGE_CHOICES = [
+        ('home', 'Home'),
+        ('about', 'About'),
+        ('contact', 'Contact'),
+        ('portfolio', 'Portfolio'),
+    ]
+
+    page = models.CharField(max_length=20, choices=PAGE_CHOICES, unique=True,blank=True)
+    image = CloudinaryField('image', null=True, blank=True)
+    alt_text = models.CharField(max_length=255,blank=True)
 
     def str(self):
-        return self.id
+        return f"Banner for {self.get_page_display()}"
 
 
 class PersonalInfo(models.Model):
