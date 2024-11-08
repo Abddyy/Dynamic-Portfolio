@@ -48,8 +48,49 @@ body {
     color: white;
 }
 
-.bannerStyle {
-    width: 100%;
-    height: 550px;
-    object-fit: cover;
+.banner-background {
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.banner-background div img {
+    width: 150px;
+    max-width: 100%;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.contact-ticket {
+    width: 50%;
+    background-color: #011222;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-ticket h3 {
+    color: #d4af37;
+}
+
+.contact-ticket p {
+    margin: 5px 0;
+}
+
+.contact-ticket .social-links a {
+    display: inline-flex;
+    align-items: center;
+    color: #d4af37;
+    text-decoration: none;
+}
+
+.contact-ticket .social-links a i {
+    font-size: 1.2em;
+}
+
+.contact-ticket .social-links a:hover {
+    color: white;
 }

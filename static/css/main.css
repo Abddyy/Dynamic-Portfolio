@@ -1,8 +1,14 @@
-body{
+body {
     background-color: black;
 }
-.navbar{
-    background-color: red;
+
+.banner-background {
+    background-size: cover;
+    background: url("media/images/background.jpg") center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .bannerStyle {

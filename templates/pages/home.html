@@ -1,11 +1,21 @@
 {% extends 'index.html' %}
+
 {% block title %}
     <title>Home</title>
 {% endblock title %}
+
 {% block banner %}
     {% if banner %}
-        <div class="image-container w-100" style="position: relative;">
-            <img src="{{ banner.image.url }} " alt="{{ banner.alt_text }}" width="100%">
+        <div class="banner-background" style="background-image: url('{{ banner.image.url }}');">
+            {% if personal_info %}
+                <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                    <img src="{{ personal_info.image.url }}" alt="Personal Image"
+                         class="img-fluid me-md-3 mb-2 mb-md-0">
+                    <h2 class="text-center text-md-start m-0 text-white">{{ personal_info.fname }} {{ personal_info.lname }}</h2>
+                </div>
+            {% else %}
+                <p class="text-white">No personal information available.</p>
+            {% endif %}
         </div>
     {% else %}
         <p>No banner available</p>
@@ -13,4 +23,39 @@
 {% endblock banner %}
 
 {% block content %}
+    <div class="container text-white mt-4">
+        <p><strong>About Me:</strong></p>
+        <div>{{ personal_info.about|safe }}</div>
+
+        <div class="d-flex justify-content-center">
+            <div class="contact-ticket mt-4 p-3">
+                <h3>Contact Me</h3>
+                <p><strong>Email:</strong> {{ personal_info.email }}</p>
+                <p><strong>Phone:</strong> {{ personal_info.phone }}</p>
+                <div class="social-links d-flex flex-wrap justify-content-center">
+                    {% if personal_info.facebook %}
+                        <a href="{{ personal_info.facebook }}" target="_blank" class="me-3">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    {% endif %}
+                    {% if personal_info.linkedin %}
+                        <a href="{{ personal_info.linkedin }}" target="_blank" class="me-3">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    {% endif %}
+                    {% if personal_info.github %}
+                        <a href="{{ personal_info.github }}" target="_blank" class="me-3">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    {% endif %}
+                    {% if personal_info.instagram %}
+                        <a href="{{ personal_info.instagram }}" target="_blank" class="me-3">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
 {% endblock content %}

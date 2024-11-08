@@ -2,13 +2,19 @@ from gc import get_objects
 
 from django.shortcuts import render, get_object_or_404
 
-from MyPortfolio.models import Project, Banner
+from MyPortfolio.models import Project, Banner, PersonalInfo
+from Portfolio.context_processor import personal_info
 
 
 def home(request):
     projects = Project.objects.all()
     banner = get_object_or_404(Banner, page='home')
-    context = {'projects': projects, 'banner': banner}
+    personal_info_object = PersonalInfo.objects.first()
+    context = {
+        'projects': projects,
+        'banner': banner,
+        'personal_info_object': personal_info_object
+    }
 
     return render(request, 'pages/home.html', context)
 
