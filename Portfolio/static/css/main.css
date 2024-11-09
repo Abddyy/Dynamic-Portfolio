@@ -1,96 +1,109 @@
-body {
-    background-color: black;
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.navbar {
-    background-color: #011222;
-}
-
-.nav-link {
-    color: white;
-    position: relative;
-}
-
-.nav-link:hover {
-    color: #d4af37;
-}
-
-.navbar-toggler-icon {
-    background-image: none;
-    color: white;
-}
-
-.navbar-toggler-icon::before {
-    content: '\2630';
-    font-size: 1.5rem;
-    color: inherit;
-}
-
-.nav-link::after {
-    content: "";
-    position: absolute;
+body, html {
+    scroll-behavior: smooth;
     width: 100%;
-    height: 2px;
-    background-color: #d4af37;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Canvas Background */
+canvas {
+    display: block;
+    position: fixed;
+    top: 0;
     left: 0;
-    bottom: 0;
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease-out;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    background-color: #122333;
 }
 
-.nav-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+/* Ticket-Style Menu on Left Side */
+.menu-ticket {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 200px;
+    padding: 20px;
+    border-right: 2px solid white; /* Right border only */
+    z-index: 2;
 }
 
-.navbar .nav-link.active {
-    color: white;
-}
-
-.banner-background {
-    background-size: cover;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.banner-background div img {
-    width: 150px;
-    max-width: 100%;
-    border-radius: 50%;
-    border: 3px solid white;
-}
-
-.contact-ticket {
-    width: 50%;
-    background-color: #011222;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.contact-ticket h3 {
-    color: #d4af37;
-}
-
-.contact-ticket p {
-    margin: 5px 0;
-}
-
-.contact-ticket .social-links a {
-    display: inline-flex;
-    align-items: center;
-    color: #d4af37;
+.menu-link {
+    font-size: 1.25rem;
+    color: #C4D4E0;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.contact-ticket .social-links a i {
-    font-size: 1.2em;
+.menu-link:hover, .menu-link.active {
+    color: #d4af37;
 }
 
-.contact-ticket .social-links a:hover {
-    color: white;
+/* Collapsed Menu Button */
+#menuToggle {
+    background-color: transparent; /* Transparent background */
+    color: #C4D4E0;
+    border: 2px solid white; /* White border */
+    padding: 10px 15px;
+    border-radius: 0 10px 10px 0;
+    z-index: 3;
+    top: 1rem;
+    left: 1rem;
+}
+
+/* Ensure it stays fixed in the top-left */
+#menuToggle.position-fixed {
+    top: 1rem;
+    left: 1rem;
+}
+
+#menuToggle:focus {
+    outline: none;
+}
+
+/* Hidden Menu Panel for Small Screens */
+.menu-panel {
+    position: fixed;
+    top: 0;
+    left: -200px; /* Off-screen initially */
+    height: 100vh;
+    width: 200px;
+    backdrop-filter: blur(10px); /* Blurred background */
+    background-color: rgba(1, 18, 34, 0.75); /* Transparent background with blur */
+    padding-top: 50px;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    transition: left 0.3s ease;
+}
+
+.menu-panel.active {
+    left: 0;
+}
+
+/* Close Button Styling */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #C4D4E0;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #d4af37;
 }

@@ -1,29 +1,58 @@
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <button
-                class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 align-items-center">
-                <li class="nav-item">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"
-                       href="{% url 'home' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"
-                       href="{% url 'about' %}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
-                       href="{% url 'contact' %}">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if request.resolver_match.url_name == 'portfolio' %}active{% endif %}"
-                       href="{% url 'portfolio' %}">Portfolio</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div class="menu-ticket d-none d-md-block">
+    <ul class="list-unstyled text-center m-0">
+        <li class="mb-3">
+            <a class="menu-link" href="#home-section">Home</a>
+        </li>
+        <li class="mb-3">
+            <a class="menu-link" href="#about-section">About</a>
+        </li>
+        <li class="mb-3">
+            <a class="menu-link" href="#contact-section">Contact</a>
+        </li>
+        <li class="mb-3">
+            <a class="menu-link" href="#portfolio-section">Portfolio</a>
+        </li>
+    </ul>
+</div>
+
+<!-- Collapsed Menu Button for Small Screens -->
+<button id="menuToggle" class="btn btn-primary d-md-none position-fixed">
+    <i class="fas fa-bars"></i>
+</button>
+
+<!-- Hidden Menu Panel for Small Screens -->
+<div id="menuPanel" class="menu-panel d-md-none">
+    <!-- Close Button for the Menu -->
+    <button id="closeMenu" class="close-btn">&times;</button>
+
+    <ul class="list-unstyled text-center m-0 mt-4">
+        <li class="mb-3">
+            <a class="menu-link" href="#home-section">Home</a>
+        </li>
+        <li class="mb-3">
+            <a class="menu-link" href="#about-section">About</a>
+        </li>
+        <li class="mb-3">
+            <a class="menu-link" href="#contact-section">Contact</a>
+        </li>
+        <li class="mb-3">
+            <a class="menu-link" href="#portfolio-section">Portfolio</a>
+        </li>
+    </ul>
+</div>
+
+<div id="home-section">
+
+</div>
+
+<div id="about-section">
+
+</div>
+
+<div id="contact-section" >
+
+</div>
+
+<div id="portfolio-section">
+
+</div>
