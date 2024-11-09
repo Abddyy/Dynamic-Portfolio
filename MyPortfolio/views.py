@@ -16,13 +16,13 @@ def home(request):
         'personal_info_object': personal_info_object
     }
 
-    return render(request, 'pages/home.html', context)
+    return render(request, 'pages/main_page.html', context)
 
 
 def about(request):
     banner = get_object_or_404(Banner, page='about')
 
-    return render(request, 'pages/about.html', {'banner': banner})
+    return render(request, 'pages/about_me.html', {'banner': banner})
 
 
 def portfolio(request):
@@ -33,4 +33,4 @@ def portfolio(request):
 
 def contact(request):
     banner = get_object_or_404(Banner, page='contact')
-    return render(request, 'pages/contact.html', {'banner': banner})
+    return render(request, 'pages/contact_me.html', {'banner': banner})

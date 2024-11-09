@@ -1,4 +1,4 @@
-/* Global Styles */
+/* General reset */
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@ body, html {
     font-family: 'Quicksand', sans-serif;
 }
 
-/* Canvas Background */
+/* Canvas Background for larger screens */
 canvas {
     display: block;
     position: fixed;
@@ -26,84 +26,158 @@ canvas {
     background-color: #122333;
 }
 
-/* Ticket-Style Menu on Left Side */
+/* Remove canvas on small screens and apply blue background */
+@media (max-width: 768px) {
+    canvas {
+        display: none; /* Hide canvas background on phones */
+    }
+    body {
+        background-color: #122333; /* Blue background for phone screens */
+    }
+}
+
+/* Sidebar Menu for Larger Screens */
 .menu-ticket {
     position: fixed;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+    top: 250px;
+    right: 70px;
+    height: 100vh;
     width: 200px;
-    padding: 20px;
-    border-right: 2px solid white; /* Right border only */
+    padding: 20px 0;
+    border-left: 2px solid white;
     z-index: 2;
+    display: flex;
+}
+
+.menu-ticket ul {
+    width: 100%;
+    padding-left: 0;
+    margin: 0;
 }
 
 .menu-link {
-    font-size: 1.25rem;
     color: #C4D4E0;
     text-decoration: none;
     transition: color 0.3s ease;
+    display: block;
+    padding: 10px 20px;
+    position: relative;
+    margin-right: -50px;
 }
 
-.menu-link:hover, .menu-link.active {
+/* Hover and active effect for the sidebar links */
+.menu-link:hover,
+.menu-link.active {
     color: #d4af37;
 }
 
-/* Collapsed Menu Button */
-#menuToggle {
-    background-color: transparent; /* Transparent background */
-    color: #C4D4E0;
-    border: 2px solid white; /* White border */
-    padding: 10px 15px;
-    border-radius: 0 10px 10px 0;
-    z-index: 3;
-    top: 1rem;
-    left: 1rem;
+.menu-link:hover::before,
+.menu-link.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    z-index: -1;
 }
 
-/* Ensure it stays fixed in the top-left */
-#menuToggle.position-fixed {
-    top: 1rem;
-    left: 1rem;
+/* Menu Toggle Button for Small Screens */
+.menu-toggle .btn,
+.menu-overlay .close-button {
+    background: rgba(18, 35, 51, 0.5);
+    backdrop-filter: blur(4px);
+    border: none;
+    color: #ffffff;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-#menuToggle:focus {
-    outline: none;
+.menu-toggle .btn i,
+.menu-overlay .close-button i {
+    color: #ffffff;
+    font-size: 1.5rem;
 }
 
-/* Hidden Menu Panel for Small Screens */
-.menu-panel {
+.menu-toggle .btn:hover,
+.menu-overlay .close-button:hover {
+    background: rgba(18, 35, 51, 0.7);
+    backdrop-filter: blur(6px);
+}
+
+/* Overlay Menu */
+.menu-overlay {
+    opacity: 0;
+    visibility: hidden;
     position: fixed;
     top: 0;
-    left: -200px; /* Off-screen initially */
-    height: 100vh;
-    width: 200px;
-    backdrop-filter: blur(10px); /* Blurred background */
-    background-color: rgba(1, 18, 34, 0.75); /* Transparent background with blur */
-    padding-top: 50px;
-    border-radius: 0 10px 10px 0;
-    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-    transition: left 0.3s ease;
-}
-
-.menu-panel.active {
     left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 35, 51, 0.8); /* Blue background without blur on text */
+    transform: scale(1.05);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Close Button Styling */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
+.menu-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+/* Centering overlay menu items */
+.overlay-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.overlay-menu li {
+    margin: 15px 0;
+}
+
+.overlay-menu .menu-link {
     color: #C4D4E0;
     font-size: 1.5rem;
-    cursor: pointer;
+    text-decoration: none;
     transition: color 0.3s ease;
+    padding: 10px 20px;
+    display: block;
+    position: relative;
 }
 
-.close-btn:hover {
+.overlay-menu .menu-link:hover {
     color: #d4af37;
+}
+
+.overlay-menu .menu-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.overlay-menu .menu-link:hover::before {
+    opacity: 1;
 }
