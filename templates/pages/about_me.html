@@ -1,2 +1,22 @@
-<p><strong>About Me:</strong></p>
-        <div>{{ personal_info.about|safe }}</div>
+<div class="container about-me-container my-5">
+    <div class="row">
+        <div class="col-12 col-md-8 col-lg-6">
+            <h1 class="text-uppercase fw-bold custom-heading">{{ personal_info.fname }}</h1>
+            <h2 class="custom-heading">
+                I'm a
+                <span class="display-3"></span>
+            </h2>
+        </div>
+    </div>
+</div>
+
+<!-- Typed.js Script for Typing Effect -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+    var typed = new Typed(".display-3", {
+        strings: ["Full-stack Developer", "Freelancer"],
+        typeSpeed: 100,
+        backSpeed: 50,
+        loop: true,
+    });
+</script>

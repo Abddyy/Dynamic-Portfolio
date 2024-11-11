@@ -22,7 +22,7 @@ def home(request):
 def about(request):
     banner = get_object_or_404(Banner, page='about')
 
-    return render(request, 'pages/about_me.html', {'banner': banner})
+    return render(request, 'pages/../templates/basecomp/about_me.html', {'banner': banner})
 
 
 def portfolio(request):
