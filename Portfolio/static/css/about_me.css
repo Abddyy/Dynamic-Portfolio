@@ -1,30 +1,97 @@
 /* About Me Container */
 .about-me-container {
-    margin-left: 20px;
     color: #fff;
 }
 
 /* Header Styling */
 .about-me-container h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     margin-bottom: 10px;
+    padding: 10px;
 }
 
-/* Custom styles for the h2 tag */
+/* Custom Heading Styling for h2 Tag */
+/* Custom Heading Styling for h1 and h2 */
 .custom-heading {
     font-family: Consolas, monaco, monospace;
-    font-size: 30px; /* Set font size here to apply to both 'a' and .display-3 */
+    font-size: 1.8rem; /* Font size for both h1 and h2 headings */
     font-weight: 900;
     margin: 0;
-    text-shadow: 0 0 10px #000000, 0 0 10px #000000;
-    color: #fff;
+    text-shadow: 2px 2px 4px #000000, 0 0 10px #000000; /* Update color for text shadow */
+    color: #fff; /* Text color */
 }
+
 
 /* Typing Effect Styling */
 .display-3 {
-    font-family: inherit; /* Inherit font family, size, and color from .custom-heading */
+    font-family: inherit;
     color: inherit;
     font-size: inherit;
     font-weight: inherit;
+}
+
+/* Profile Image Container with Animated Rings */
+.image-container {
+    position: relative;
+    display: inline-block;
+    border: 3px solid #C4D4E0;
+    border-radius: 50%;
+    margin-left: -30px; /* Moves image left on larger screens */
+}
+
+/* Center image on smaller screens */
+@media (max-width: 576px) {
+    .image-container {
+        margin-left: 0; /* Reset for small screens */
+        margin-bottom: 20px; /* Add space below image on smaller screens */
+    }
+}
+
+/* Profile Image Styling */
+.image-container img {
+    display: block;
+    border-radius: 50%;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}
+
+/* Animated Oval Pop-out Rings */
+.image-container::before,
+.image-container::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid #C4D4E0;
+    border-radius: 50%;
+    animation: ovalPopOut 1s infinite ease-in-out;
+    opacity: 0;
+    z-index: 0;
+}
+
+/* Inner ring */
+.image-container::before {
+    transform: scale(1.1);
+}
+
+/* Outer ring */
+.image-container::after {
+    animation-delay: 0.5s;
+    transform: scale(1.3);
+}
+
+/* Keyframes for the Smooth Oval Pop-out Effect */
+@keyframes ovalPopOut {
+    0% {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
 }

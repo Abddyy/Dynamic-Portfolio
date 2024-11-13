@@ -1,11 +1,19 @@
-<div class="container about-me-container my-5">
-    <div class="row">
-        <div class="col-12 col-md-8 col-lg-6">
-            <h1 class="text-uppercase fw-bold custom-heading">{{ personal_info.fname }}</h1>
-            <h2 class="custom-heading">
-                I'm a
-                <span class="display-3"></span>
+<div class="container about-me-container mt-5 py-5">
+    <div class="row align-items-center flex-column-reverse flex-lg-row">
+
+        <!-- Text Column -->
+        <div class="col-12 col-lg-6 text-center text-lg-start mt-4 mt-lg-0">
+            <h1 class="fw-bold mt-3 custom-heading">{{ personal_info.fname }}</h1>
+            <h2 class="fw-bold mt-3 custom-heading">
+                I'm a <span class="display-3 text-nowrap larger-typed-text "></span>
             </h2>
+        </div>
+
+        <!-- Image Column with Animated Border -->
+        <div class="col-12 col-lg-5 d-flex justify-content-center">
+            <div class="image-container">
+                <img src="{{ personal_info.image.url }}" alt="Profile Image" class="img-fluid">
+            </div>
         </div>
     </div>
 </div>
