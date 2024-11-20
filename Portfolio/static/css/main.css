@@ -181,3 +181,34 @@ canvas {
 .overlay-menu .menu-link:hover::before {
     opacity: 1;
 }
+.circle-node-navigation {
+    position: fixed;
+    top: 10px; /* Place at the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to center */
+    z-index: 3;
+    display: flex; /* Arrange buttons side by side */
+    gap: 10px; /* Add spacing between buttons */
+}
+.circle-node {
+    display: block;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 15px;
+    background: rgba(18, 35, 51, 0.5);
+    color: #ffffff;
+    font-weight: bold;
+    border: 1px solid #ffffff; /* White border with 1px thickness */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.circle-node:hover {
+    background-color: #C4D4E0;
+    color: #122333;
+    transform: scale(1.1);
+}

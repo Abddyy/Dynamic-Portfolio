@@ -7,6 +7,17 @@
 
 {% block content %}
     <canvas id="canvas"></canvas>
+
+    <!-- Navigation for small screens -->
+    <div class="circle-node-navigation d-md-none">
+        <button class="circle-node" data-scroll="#TOP-section">1</button>
+        <button class="circle-node" data-scroll="#ABOUT-section">2</button>
+        <button class="circle-node" data-scroll="#SKILLS-section">3</button>
+        <button class="circle-node" data-scroll="#EXPERIENCES-section">4</button>
+        <button class="circle-node" data-scroll="#PROJECTS-section">5</button>
+    </div>
+
+    <!-- Sidebar menu for large screens -->
     <div class="menu-ticket d-none d-md-block">
         <ul class="list-unstyled m-0">
             <li class="mb-3">
@@ -27,34 +38,14 @@
         </ul>
     </div>
 
-    <!-- Menu Toggle Button for Small Screens -->
-    <div class="menu-toggle d-md-none position-fixed top-0 end-0 p-3">
-        <button class="btn btn-light" id="menuButton">
-            <i class="bi bi-list fs-3"></i> <!-- Bootstrap icon for menu button -->
-        </button>
-    </div>
-
-    <!-- Full-Screen Overlay Menu for Small Screens -->
-    <div class="menu-overlay d-md-none position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 text-center text-light d-flex align-items-center justify-content-center" id="menuOverlay">
-        <button class="btn btn-light position-absolute top-0 end-0 m-3" id="closeButton">
-            <i class="bi bi-x-lg fs-3"></i> <!-- Bootstrap icon for close button -->
-        </button>
-        <ul class="overlay-menu list-unstyled m-0">
-            <li class="mb-3"><a class="menu-link fs-4 text-light" href="#TOP-section">TOP</a></li>
-            <li class="mb-3"><a class="menu-link fs-4 text-light" href="#ABOUT-section">ABOUT ME</a></li>
-            <li class="mb-3"><a class="menu-link fs-4 text-light" href="#SKILLS-section">SKILLS</a></li>
-            <li class="mb-3"><a class="menu-link fs-4 text-light" href="#EXPERIENCES-section">EXPERIENCES</a></li>
-            <li class="mb-3"><a class="menu-link fs-4 text-light" href="#PROJECTS-section">PROJECTS</a></li>
-        </ul>
-    </div>
-
-    <!-- Content Sections -->
+    <!-- Section content -->
     <div id="TOP-section">
-        {% include 'pages/about_me.html' %} <!-- Including about_me.html in the TOP section -->
+        {% include 'pages/about_me.html' %}
     </div>
 
     <div id="ABOUT-section">
         <p style="color: #ff0000">Section Content: ABOUT ME</p>
+        <br><br><br><br><br><br><br><br><br>
     </div>
 
     <div id="SKILLS-section">
@@ -68,9 +59,4 @@
     <div id="PROJECTS-section">
         <p style="color: #ff0000">Section Content: PROJECTS</p>
     </div>
-
-    <!-- JavaScript Files -->
-    <script src="{% static 'js/background.js' %}"></script>
-    <script src="{% static 'js/scroll.js' %}"></script>
-    <script src="{% static 'js/menu_panel.js' %}"></script>
 {% endblock content %}

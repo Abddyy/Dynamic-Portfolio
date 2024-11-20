@@ -1,18 +1,214 @@
-body {
-    background-color: black;
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.banner-background {
-    background-size: cover;
-    background: url("media/images/background.jpg") center;
-    height: 400px;
+body, html {
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Canvas Background for larger screens */
+canvas {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    background-color: #122333;
+}
+
+/* Remove canvas on small screens and apply blue background */
+@media (max-width: 768px) {
+    canvas {
+        display: none; /* Hide canvas background on phones */
+    }
+    body {
+        background-color: #122333; /* Blue background for phone screens */
+    }
+}
+
+/* Sidebar Menu for Larger Screens */
+.menu-ticket {
+    position: fixed;
+    top: 250px;
+    right: 70px;
+    height: 100vh;
+    width: 200px;
+    padding: 20px 0;
+    border-left: 2px solid white;
+    z-index: 2;
+    display: flex;
+}
+
+.menu-ticket ul {
+    width: 100%;
+    padding-left: 0;
+    margin: 0;
+}
+
+.menu-link {
+    color: #C4D4E0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 10px 20px;
+    position: relative;
+    margin-right: -50px;
+}
+
+/* Hover and active effect for the sidebar links */
+.menu-link:hover,
+.menu-link.active {
+    color: #d4af37;
+}
+
+.menu-link:hover::before,
+.menu-link.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    transition: opacity 0.3s ease;
+    opacity: 1;
+    z-index: -1;
+}
+
+/* Menu Toggle Button for Small Screens */
+.menu-toggle .btn,
+.menu-overlay .close-button {
+    background: rgba(18, 35, 51, 0.5);
+    backdrop-filter: blur(4px);
+    border: none;
+    color: #ffffff;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-.bannerStyle {
+.menu-toggle .btn i,
+.menu-overlay .close-button i {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.menu-toggle .btn:hover,
+.menu-overlay .close-button:hover {
+    background: rgba(18, 35, 51, 0.7);
+    backdrop-filter: blur(6px);
+}
+
+/* Overlay Menu */
+.menu-overlay {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 550px;
-    object-fit: cover;
+    height: 100%;
+    background: rgba(18, 35, 51, 0.8); /* Blue background without blur on text */
+    transform: scale(1.05);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+/* Centering overlay menu items */
+.overlay-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.overlay-menu li {
+    margin: 15px 0;
+}
+
+.overlay-menu .menu-link {
+    color: #C4D4E0;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 10px 20px;
+    display: block;
+    position: relative;
+}
+
+.overlay-menu .menu-link:hover {
+    color: #d4af37;
+}
+
+.overlay-menu .menu-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.overlay-menu .menu-link:hover::before {
+    opacity: 1;
+}
+.circle-node-navigation {
+    position: fixed;
+    top: 10px; /* Place at the top */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust to center */
+    z-index: 3;
+    display: flex; /* Arrange buttons side by side */
+    gap: 10px; /* Add spacing between buttons */
+}
+.circle-node {
+    display: block;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 15px;
+    background: rgba(18, 35, 51, 0.5);
+    color: #ffffff;
+    font-weight: bold;
+    border: 1px solid #ffffff; /* White border with 1px thickness */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.circle-node:hover {
+    background-color: #C4D4E0;
+    color: #122333;
+    transform: scale(1.1);
 }

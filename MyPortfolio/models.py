@@ -35,7 +35,7 @@ class PersonalInfo(models.Model):
     address = models.CharField(max_length=200, blank=True)
     city = models.CharField(max_length=50, blank=True)
     image = CloudinaryField('images', null=True, blank=True)
-    resume = CloudinaryField('images', null=True, blank=True)
+    resume = CloudinaryField('resume', null=True, blank=True)
     facebook = models.URLField(blank=True)
     linkedin = models.URLField(blank=True)
     github = models.URLField(blank=True)
